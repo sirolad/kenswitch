@@ -5,15 +5,10 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ExampleTest extends TestCase
+class IPaymentTest extends TestCase
 {
-    /**
-     * A Payment routes.
-     *
-     * @return void
-     */
-    public function testIndex()
+    public function testAllTransactionsCanBeRetrieved()
     {
-        $this->get('/')->assertStatus(200);
+        //
     }
 }

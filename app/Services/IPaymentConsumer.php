@@ -4,7 +4,7 @@ namespace Kenswitch\Services;
 
 use \SoapClient;
 
-class Client
+class IPaymentConsumer
 {
     protected $client;
 

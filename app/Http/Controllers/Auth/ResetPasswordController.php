@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Kenswitch\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Kenswitch\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

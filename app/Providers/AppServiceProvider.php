@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Kenswitch\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
