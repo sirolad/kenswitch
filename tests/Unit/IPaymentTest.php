@@ -8,12 +8,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
+     * A Payment routes.
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testIndex()
     {
-        $this->assertTrue(true);
+        $this->get('/')->assertStatus(200);
     }
 }
