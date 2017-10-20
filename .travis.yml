@@ -26,3 +26,8 @@ matrix:
 notifications:
     on_success: never
     on_failure: always
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
+  # or enable logging
+  - travis_retry php vendor/bin/coveralls -v
