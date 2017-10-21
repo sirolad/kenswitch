@@ -3,17 +3,17 @@
 namespace Kenswitch\Http\Controllers\Api;
 
 use Kenswitch\IPayment;
-use Kenswitch\Services\IPaymentConsumer;
 use Illuminate\Http\Request;
 use Kenswitch\Http\Controllers\Controller;
+use Kenswitch\Repositories\IPaymentRepository;
 
 class IPaymentController extends Controller
 {
-    protected $consumer;
+    protected $repository;
 
-    public function __construct(IPaymentConsumer $consumer)
+    public function __construct(IPaymentRepository $repository)
     {
-        $this->consumer = $consumer;
+        $this->repository = $repository;
     }
 
     /**
@@ -23,12 +23,6 @@ class IPaymentController extends Controller
      */
     public function index()
     {
-        $wsdl = 'http://localhost:8088/mockIPayment_Binding?WSDL';
-
-        $this->client = new \SoapClient($wsdl);
-        $d = ['firstName' => 'kola'];
-//        $s = $this->client->sayHello($d);
-
         $data = [
             'amount' => 500,
             'CVV' => 123,
@@ -47,11 +41,7 @@ class IPaymentController extends Controller
             'tranType' => 00,
             'transmissionDateAndTime' => 0630013517
         ];
-        $response = $this->client->paymentOperation($data);
-//        $arr = ['firstName' => 'Nigeria'];
-//        $response = $this->client->sayHello();
-
-        print_r($response);
+        return response()->json([$data], 200);
     }
 
     /**
@@ -73,7 +63,11 @@ class IPaymentController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $this->consumer->makePaymentRequest($data);
+        $response = $this->consumer->callOperation($data);
+
+        IPayment::create($this->transformData($response));
+
+        return response()->json(['message' => 'Transaction was successful.'], 200);
     }
 
     /**

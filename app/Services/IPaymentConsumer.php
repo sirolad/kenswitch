@@ -13,15 +13,15 @@ class IPaymentConsumer
         $this->client = $client;
     }
 
-    public function makeCall()
+    /**
+     * Make a call the operation
+     *
+     * @param array $data
+     * @param string $method
+     * @return string
+     */
+    public function callOperation(array $data, $method = 'paymentOperation')
     {
-        return $this->client(config('ipayment.wsdl'));
-    }
-
-    public function makePaymentRequest(array $data, $method = 'paymentOperation')
-    {
-        $call = $this->makeCall();
-
-        return $call->$method($data);
+        return $this->client->$method($data);
     }
 }
