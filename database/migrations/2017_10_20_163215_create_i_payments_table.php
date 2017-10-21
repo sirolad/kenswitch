@@ -15,20 +15,19 @@ class CreateIPaymentsTable extends Migration
     {
         Schema::create('i_payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('acquiringInstIdCode')->nullable();
+            $table->integer('additionalAmount')->nullable();
+            $table->string('additionalData')->nullable();
             $table->double('amount');
-            $table->smallInteger('cvv');
-            $table->integer('expiryDate');
-            $table->string('forwardingInst');
+            $table->integer('authorizationResponseId')->nullable();
+            $table->smallInteger('currencyCode');
             $table->string('localDate');
             $table->string('localTime');
-            $table->integer('merchantId');
-            $table->integer('pan');
-            $table->string('pin');
-            $table->string('receivingInst');
+            $table->string('nameAndLocation')->nullable();
             $table->integer('referenceNo')->index();
-            $table->string('secret');
-            $table->integer('systemTraceNo');
-            $table->string('string');
+            $table->string('responseCode');
+            $table->integer('systemAuditNumber');
+            $table->string('terminalId')->nullable();
             $table->tinyInteger('tranType');
             $table->string('transmissionDateAndTime');
             $table->timestamps();

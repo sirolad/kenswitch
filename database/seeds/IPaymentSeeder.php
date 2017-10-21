@@ -1,8 +1,9 @@
 <?php
 
+use Kenswitch\IPayment;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class IPaymentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(IPaymentSeeder::class);
+        factory(IPayment::class, 20)->create();
     }
 }
