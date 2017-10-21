@@ -62,10 +62,7 @@ class IPaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $response = $this->consumer->callOperation($data);
-
-        IPayment::create($this->transformData($response));
+        $this->repository->createPayment($request);
 
         return response()->json(['message' => 'Transaction was successful.'], 200);
     }
