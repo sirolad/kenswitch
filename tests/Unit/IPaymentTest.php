@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Kenswitch\IPayment;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class IPaymentTest extends TestCase
@@ -41,7 +40,12 @@ class IPaymentTest extends TestCase
     {
         $this->transaction->create(['id' => 4]);
 
-        $this->patch('/api/ipayment/4', ['amount' => 200])->assertStatus(200);
+        $this->patch('/api/ipayment/4', ['amount' => 200])
+            ->assertStatus(200)
+            ->assertJson([
+                'success' => true,
+                'message' => 'Transaction successfully updated.'
+            ]);
     }
 
     public function testTransactionCanBeDeleted()
