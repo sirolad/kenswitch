@@ -8,5 +8,4 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class IPaymentTest extends TestCase
 {
-
 }

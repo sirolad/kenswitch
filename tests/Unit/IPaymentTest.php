@@ -9,7 +9,16 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class IPaymentTest extends TestCase
 {
-   use RefreshDatabase;
+    use DatabaseMigrations;
+
+    protected $transaction;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->transaction = factory(IPayment::class);
+    }
 
     /**
      * A Payment routes.
@@ -23,15 +32,22 @@ class IPaymentTest extends TestCase
 
     public function testCanGetOneTransaction()
     {
-        factory(IPayment::class)->create(['id' => 3]);
+        $this->transaction->create(['id' => 3]);
 
         $this->get('/api/ipayment/3')->assertStatus(200);
     }
 
     public function testATransactionCanBeUpdated()
     {
-        factory(IPayment::class)->create(['id' => 4]);
+        $this->transaction->create(['id' => 4]);
 
         $this->patch('/api/ipayment/4', ['amount' => 200])->assertStatus(200);
+    }
+
+    public function testTransactionCanBeDeleted()
+    {
+        $this->transaction->create(['id' => 5]);
+
+        $this->delete('/api/ipayment/5', ['amount' => 200])->assertStatus(200);
     }
 }
