@@ -34,7 +34,7 @@ Also run on homestead environment
 ```
 to configure your database.
 
-Setup up a local webservice and add the URL to .env file e.g:
+Setup up a local webservice based on kenswitch.wsdl and add the URL to .env file e.g:
 ```bash
     WSDL=http://localhost:8088/mockIPayment_Binding?WSDL
 ```

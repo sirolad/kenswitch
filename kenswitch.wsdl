@@ -1,0 +1,64 @@
+<definitions name="IPaymentService" targetNamespace="http://www.examples.com/wsdl/IPaymentService.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.examples.com/wsdl/IPaymentService.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <message name="PaymentOperation">
+        <part name="amount" type="xsd:integer"/>
+        <part name="cvv" type="xsd:integer"/>
+        <part name="expiryDate" type="xsd:date"/>
+        <part name="forwardingInst" type="xsd:string"/>
+        <part name="localDate" type="xsd:date"/>
+        <part name="localTime" type="xsd:time"/>
+        <part name="merchantId" type="xsd:integer"/>
+        <part name="amount" type="xsd:integer"/>
+        <part name="pan" type="xsd:integer"/>
+        <part name="pin" type="xsd:integer"/>
+        <part name="receivingInst" type="xsd:string"/>
+        <part name="referenceNo" type="xsd:string"/>
+        <part name="secret" type="xsd:string"/>
+        <part name="systemTraceNo" type="integer"/>
+        <part name="token" type="xsd:integer"/>
+        <part name="tranType" type="xsd:integer"/>
+        <part name="transmissionDateAndTime" type="xsd:integer"/>
+    </message>
+    <message name="PaymentOperationResponse">
+        <part name="acquiringInstIdCode" type="xsd:integer"/>
+        <part name="additionalAmount" type="xsd:integer"/>
+        <part name="additionalData" type="xsd:string"/>
+        <part name="amount" type="xsd:integer"/>
+        <part name="authorizationResponseId" type="xsd:integer"/>
+        <part name="currencyCode" type="xsd:integer"/>
+        <part name="localDate" type="xsd:date"/>
+        <part name="localTime" type="xsd:time"/>
+        <part name="nameAndLocation" type="xsd:string"/>
+        <part name="referenceNo" type="xsd:string"/>
+        <part name="responseCode" type="xsd:integer"/>
+        <part name="systemAuditNumber" type="xsd:integer"/>
+        <part name="terminalId" type="xsd:integer"/>
+        <part name="tranType" type="xsd:integer"/>
+    </message>
+    <portType name="IPayment_PortType">
+        <operation name="paymentOperation">
+            <input message="tns:PaymentOperation"/>
+            <output message="tns:PaymentOperationResponse">
+            </output>
+        </operation>
+    </portType>
+    <binding name="IPayment_Binding" type="tns:IPayment_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="paymentOperation">
+            <soap:operation soapaction="paymentOperation"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="IPayment_Service">
+        <documentation>
+            WSDL File for IPaymentService
+        </documentation>
+        <port binding="tns:IPayment_Binding" name="IPayment_Port">
+            <soap:address location="http://www.examples.com/IPayment/"/>
+        </port>
+    </service>
+</definitions>
