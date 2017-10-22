@@ -10,22 +10,6 @@ use Kenswitch\Services\IPaymentConsumer as Service;
 class IPaymentRepository extends BaseRepository
 {
     /**
-     * @var Service
-     */
-    protected $service;
-
-    /**
-     * IPaymentRepository constructor.
-     * @param App $app
-     * @param Service $service
-     */
-    public function __construct(App $app, Service $service)
-    {
-        parent::__construct($app);
-        $this->service = $service;
-    }
-
-    /**
      * Model Class
      *
      * @return string
@@ -41,10 +25,10 @@ class IPaymentRepository extends BaseRepository
      * @param Request $request
      * @return array
      */
-    public function createPayment(Request $request)
+    public function createPayment(Request $request, Service $service)
     {
         $data = $request->all();
-        $response = $this->service->callOperation($data);
+        $response = $service->callOperation($data);
 
         return $this->transformData($response);
     }

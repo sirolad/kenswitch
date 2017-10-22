@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('SoapClient', function() {
-            return new \SoapClient(config('ipayment.wsdl'));
-        });
+//        $this->app->singleton('SoapClient', function() {
+//            return new \SoapClient(config('ipayment.wsdl'));
+//        });
     }
 }

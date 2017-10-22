@@ -9,6 +9,7 @@ use Kenswitch\Http\Requests\PaymentRequest;
 use Kenswitch\Repositories\IPaymentRepository;
 use Kenswitch\Http\Resources\IPaymentResource;
 use Kenswitch\Http\Resources\IPaymentCollection;
+use Kenswitch\Services\IPaymentConsumer;
 
 class IPaymentController extends Controller
 {
@@ -42,9 +43,9 @@ class IPaymentController extends Controller
      * @param  PaymentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PaymentRequest $request)
+    public function store(PaymentRequest $request, IPaymentConsumer $consumer)
     {
-        $this->repository->createPayment($request);
+        $this->repository->createPayment($request, $consumer);
 
         return response()->json(['success' => true,
             'message' => 'Transaction was successful.'], 200);

@@ -47,7 +47,7 @@ class IPaymentRepositoryTest extends TestCase
         $this->service->shouldReceive('callOperation')->with($request->all())
             ->andReturn($this->xmlString());
 
-        $this->assertInternalType('array', $this->repo->createPayment($request));
+        $this->assertInternalType('array', $this->repo->createPayment($request, $this->service));
     }
 
     /**

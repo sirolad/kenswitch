@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Kenswitch\Repositories\IPaymentRepository;
+use Kenswitch\Services\IPaymentConsumer;
 use Mockery as m;
 use Tests\TestCase;
 use Kenswitch\Payment;
@@ -64,9 +65,10 @@ class CreateRequestTest extends TestCase
         $response = json_encode(['success' => true,
             'message' => 'Transaction was successful.']);
         $request = m::mock(PaymentRequest::class);
-        $this->repo->shouldReceive('createPayment')->with($request)
+        $service = m::mock(IPaymentConsumer::class);
+        $this->repo->shouldReceive('createPayment')->with($request, $service)
             ->andReturn($response);
 
-        $this->assertJson($response, $this->controller->store($request));
+        $this->assertJson($response, $this->controller->store($request, $service));
     }
 }
