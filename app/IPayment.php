@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class IPayment extends Model
 {
     /**
-     * Mass assignment property
+     * Mass Assignment Property
      *
      * @var array
      */

@@ -9,19 +9,38 @@ use Kenswitch\Services\IPaymentConsumer as Service;
 
 class IPaymentRepository extends BaseRepository
 {
+    /**
+     * @var Service
+     */
     protected $service;
 
+    /**
+     * IPaymentRepository constructor.
+     * @param App $app
+     * @param Service $service
+     */
     public function __construct(App $app, Service $service)
     {
         parent::__construct($app);
         $this->service = $service;
     }
 
+    /**
+     * Model Class
+     *
+     * @return string
+     */
     public function model()
     {
         return IPayment::class;
     }
 
+    /**
+     * Make Payment
+     *
+     * @param Request $request
+     * @return array
+     */
     public function createPayment(Request $request)
     {
         $data = $request->all();
@@ -31,6 +50,8 @@ class IPaymentRepository extends BaseRepository
     }
 
     /**
+     * Transform returned data from webservice
+     *
      * @param $data
      * @return array
      */

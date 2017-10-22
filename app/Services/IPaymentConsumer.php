@@ -6,8 +6,15 @@ use \SoapClient;
 
 class IPaymentConsumer
 {
+    /**
+     * @var SoapClient
+     */
     protected $client;
 
+    /**
+     * IPaymentConsumer constructor.
+     * @param SoapClient $client
+     */
     public function __construct(SoapClient $client)
     {
         $this->client = $client;

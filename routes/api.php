@@ -11,4 +11,4 @@
 |
 */
 
-Route::resource('ipayment', 'Api\IPaymentController');
+Route::resource('ipayment', 'Api\IPaymentController')->except(['create', 'edit']);
