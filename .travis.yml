@@ -5,7 +5,6 @@ language: php
 php:
   - 7.0
   - 7.1
-  - hhvm
 
 # Commands to be run before your environment runs.
 before_script:
@@ -13,8 +12,7 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 # Commands you want to run that will verify your build.
-script:
-  - phpunit
+script: phpunit
 
 # allow_failures: Allow this build to fail under the specified environments.
 # fast_finish: If your build fails do not continue trying to build, just stop.
@@ -27,8 +25,3 @@ matrix:
 notifications:
     on_success: never
     on_failure: always
-
-after_success:
-  - travis_retry php vendor/bin/coveralls
-  # or enable logging
-  - travis_retry php vendor/bin/coveralls -v
