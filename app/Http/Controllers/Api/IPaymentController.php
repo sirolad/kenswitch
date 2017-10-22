@@ -2,13 +2,13 @@
 
 namespace Kenswitch\Http\Controllers\Api;
 
-use Kenswitch\Http\Resources\IPaymentCollection;
 use Kenswitch\IPayment;
 use Illuminate\Http\Request;
 use Kenswitch\Http\Controllers\Controller;
 use Kenswitch\Http\Requests\PaymentRequest;
 use Kenswitch\Repositories\IPaymentRepository;
 use Kenswitch\Http\Resources\IPaymentResource;
+use Kenswitch\Http\Resources\IPaymentCollection;
 
 class IPaymentController extends Controller
 {

@@ -19,6 +19,6 @@ $factory->define(Payment::class, function (Faker $faker) {
         'systemTraceNo' => $faker->randomNumber(6),
         'token' => $faker->randomNumber(6),
         'tranType' => $faker->randomNumber(2),
-        'transmissionDateAndTime' => $faker->randomNumber(8)
+        'transmissionDateAndTime' => 1234567890
     ];
 });
