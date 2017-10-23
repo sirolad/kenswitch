@@ -28,7 +28,7 @@ $ composer install
 ```
 to pull in the project dependencies.
 
-Also run on homestead environment
+Also run on terminal
 ```bash
     php artisan migrate --seed
 ```
